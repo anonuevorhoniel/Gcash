@@ -17,16 +17,7 @@
     <div style="margin-left: 40%">
         {{ $gcash->links() }}
         </div>
-    <div style="display: flex; align-items: center;">
-      
-        <a href="/gcash/creates" style="padding: 1%">
-          <button class="btn btn-dark" style=""> + Create new record</button>
-        </a>
-      <a href="/gcash/unclaimed" style="padding-right: 1%"><button class="btn btn-primary"  >View Unclaimed</button></a>
-      <a href="/all"><button class="btn btn-success">View All</button></a>
-      <h5 style=" margin-left:30%; float:right; ">Total today: {{$totals}}.00</h5>
-     
-      </div>
+   
 <table class="table table-bordered">
     <thead>
       <tr>
@@ -58,8 +49,20 @@
               <td><a href="/gcash/edit/{{$item->id}}"><button class="btn btn-success">Edit</button></a></td>
               <td><a id="del" onclick="dels(this, {{$item->id}})" href=""><button class="btn btn-danger">Delete</button></a></td>
           </tr>
-        
+        @php
+            $total += $item->interest
+        @endphp
       @endforeach
+      <div style="display: flex; align-items: center;">
+      
+        <a href="/gcash/creates" style="padding: 1%">
+          <button class="btn btn-dark" style=""> + Create new record</button>
+        </a>
+      <a href="/gcash/unclaimed" style="padding-right: 1%"><button class="btn btn-primary"  >View Unclaimed</button></a>
+      <a href="/"><button class="btn btn-success">View Today</button></a>
+    
+     
+      </div>
      
   @else
       <h3>No transaction</h3>

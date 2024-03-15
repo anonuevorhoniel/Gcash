@@ -2,8 +2,9 @@
 
 @section('content')
   <center>
-    <div style="padding-top: 5%; width: 60%; height: 60%">
-      <form action="{{ route('gcash.create') }}" method="POST">
+    <div style="padding-top: 2%; width: 60%; height: 60%">
+     <a href="/"> <button class="btn btn-warning" style="float: left">Back</button></a><br><br>
+      <form action="{{ route('gcash.create') }}" method="POST" style="text-align: center">
         @csrf
         <div class="form-group">
           <label for="amount">Amount</label>
@@ -17,6 +18,18 @@
           <label for="reference">Reference</label>
           <input name="reference" type="number" class="form-control" id="reference">
         </div>
+        <div class="form-group">
+          <label for="reference">Claimed</label>
+          <select name="claimed" class="form-control" id="">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="reference">Interest</label>
+          <input name="interest" type="number" class="form-control" id="reference">
+        </div>
+        
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>

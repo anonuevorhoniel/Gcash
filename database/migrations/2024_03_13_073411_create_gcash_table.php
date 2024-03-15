@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('amount');
             $table->string('number');
             $table->string('reference');
+            $table->string('claimed');
+            $table->string('interest');
             $table->timestamps();
         });
     }

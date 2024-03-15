@@ -19,7 +19,9 @@ class GcashFactory extends Factory
         return [
             'amount' => $this->faker->numberBetween(1, 999),
             'number' => $this->faker->numberBetween(10000000000, 99999999999),
-            'reference' => $this->faker->numberBetween(1000, 9999)
+            'reference' => $this->faker->numberBetween(1000, 9999),
+            'claimed' => $this->faker->randomElement(['Yes', "No"]),
+            'interest' => $this->faker->numberBetween(10, 1000)
         ];
     }
 }

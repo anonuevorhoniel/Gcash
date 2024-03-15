@@ -10,15 +10,15 @@ class Gcash extends Model
     use HasFactory;
 
     protected $table = 'gcash'; //WAG TO KAKALIMUTAN
-    protected $fillable = ['amount', 'number', 'reference'];
+    protected $fillable = ['amount', 'number', 'reference', 'claimed', 'interest'];//data
 
-    public static function deleteById($id)
+    public static function deleteById($id)//passed paramter galing sa url
     {
         // hanapin id ng current record
-        $gcashRecord = Gcash::find($id);
+        $gcashRecord = Gcash::find($id);//check kung may same id sa table
         
         if ($gcashRecord) {
-            $gcashRecord->delete();
+            $gcashRecord->delete();//nasa model 
             return true; //gagawing true ang gcashRecord
         }
 

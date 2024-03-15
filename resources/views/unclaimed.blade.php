@@ -14,9 +14,7 @@
 @endif
 
 <div style="padding-top:2%; margin-left: auto;margin-right: auto; overflow-y: scroll; height: 600px">
-    <div style="margin-left: 40%">
-        {{ $gcash->links() }}
-        </div>
+   
     <div style="display: flex; align-items: center;">
       
         <a href="/gcash/creates" style="padding: 1%">
@@ -24,7 +22,6 @@
         </a>
       <a href="/gcash/unclaimed" style="padding-right: 1%"><button class="btn btn-primary"  >View Unclaimed</button></a>
       <a href="/all"><button class="btn btn-success">View All</button></a>
-      <h5 style=" margin-left:30%; float:right; ">Total today: {{$totals}}.00</h5>
      
       </div>
 <table class="table table-bordered">

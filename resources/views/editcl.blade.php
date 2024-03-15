@@ -3,9 +3,8 @@
 
 <center>
 <div style="padding-top: 2%; width: 60%; height: 60%">
-  <a href="/"> <button class="btn btn-warning" style="float: left">Back</button></a><br><br>
-
-<form action="{{url('/update/'.$table->id)}}" method="POST">
+  <a href="/gcash/unclaimed"> <button class="btn btn-warning" style="float: left">Back</button></a><br><br>
+<form action="{{url('/update/unclaimed/'.$table->id)}}" method="POST">
   @csrf
   @method('PUT')
     <div class="form-group">
@@ -37,7 +36,7 @@
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Interest</label>
-        <input name="interest" type="number" class="form-control" id="exampleInputPassword1" value="{{$table->interest}}">
+        <input name="interest" type="number"  class="form-control" id="exampleInputPassword1" value="{{$table->interest}}">
       </div>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
