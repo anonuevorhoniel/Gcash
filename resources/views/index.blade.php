@@ -29,17 +29,6 @@
         </div>  
       </div>
       </div>
-    <div style="display: flex; align-items: center;">
-      
-        <a href="/gcash/creates" style="padding: 1%">
-          <button class="btn btn-dark" style=""> + Create new record</button>
-        </a>
-      <a href="/gcash/unclaimed" style="padding-right: 1%"><button class="btn btn-primary"  >View Unclaimed</button></a>
-      <a href="/all"><button class="btn btn-success">View All</button></a>
-      
-     
-       
-      </div>
       <table class="table table-bordered">
         <thead>
           <tr>
