@@ -49,7 +49,7 @@
   @endphp
   @if (!is_null($gcash) && count($gcash) > 0) <!-- Check if $gcash is not null and contains data -->
       @foreach ($gcash as $item)
-          <!-- Loop through the data and display the table rows -->
+          <!-- display data -->
           <tr>
               <th scope="row">{{$item['id']}}</th>
               <td>{{$item->amount}}</td>
