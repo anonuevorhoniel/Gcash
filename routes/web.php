@@ -1,19 +1,23 @@
 <?php
+use Carbon\Carbon;
 use App\Models\Gcash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GcashController;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 
 Route::get('/', function() {
     $todayDates = Gcash::orderBy('created_at', 'desc')->whereDate('created_at', \Carbon\Carbon::today())->paginate(5);
     $totals = Gcash::whereDate('created_at', \Carbon\Carbon::today())->sum('interest');
-    return view('index', ['gcash' => $todayDates, 'totals' => $totals]);
+    return view('index', ['gcash' => $todayDates, 'sum' => $totals, 'today' => \Carbon\Carbon::today()]);
 })->name('index');
+
 Route::get('/all', function()
 {
 return view('all', [
-'gcash' => Gcash::orderBy('created_at', 'desc')->paginate(5)
+'gcash' => Gcash::orderBy('created_at', 'desc')->paginate(5),
+'sum' => Gcash::all()->sum('interest')
 ]);
 });
 
@@ -56,3 +60,4 @@ Route::get('/gcash/unclaimed/delete/{id}', function($id) {
     }
 });   
 Route::any('/gcash/search', [GcashController::class, 'search']);
+Route::match(['get', 'post'],'/gcash/date', [GcashController::class, 'dates'])->name('gcash.date');

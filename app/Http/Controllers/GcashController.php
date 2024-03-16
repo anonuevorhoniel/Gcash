@@ -57,9 +57,9 @@ class GcashController extends Controller
 
 public function unclaimed()
 {
-    $totals = Gcash::all()->sum('interest');
-    $gcash = Gcash::all()->where('claimed', 'LIKE', 'No');
-    return view('unclaimed', ['gcash' => $gcash, 'total' => $totals]);
+    $totals = Gcash::orderBy('created_at', 'desc')->where('claimed', 'LIKE', 'No')->sum('interest');
+    $gcash = Gcash::orderBy('created_at', 'desc')->where('claimed', 'LIKE', 'No')->paginate(5);
+    return view('unclaimed', ['gcash' => $gcash, 'sum' => $totals]);
 }
 public function updatecl(Request $request, $id)
 {
@@ -81,5 +81,12 @@ public function search(Request $req)
     ]);
     $tot = Gcash::where('reference', 'like', '%' . $val['search'] . '%')->get();
     return view('search', ['gcash' => $tot]);
+}
+public function dates(Request $req)
+{
+    $vals = $req->input('datesss');
+    $todayDates = Gcash::orderBy('created_at', 'desc')->whereDate('created_at', $vals)->paginate(5);
+    $sum = Gcash::orderBy('created_at', 'desc')->whereDate('created_at', $vals)->sum('interest');
+    return view('date', ['date' => $todayDates, 'inp' => $vals, 'sum' => $sum]);
 }
 }
